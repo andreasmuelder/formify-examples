@@ -1,0 +1,18 @@
+ app PersonManagement { 
+
+        model { 
+            entity Person {
+                firstname : string
+                lastname : string
+                city: string
+                address : string
+            }
+        }
+        view {  
+            @Root
+            collection PersonCollection {
+                entity Person
+                field name : firstname
+            }
+        }
+    }
