@@ -1,0 +1,17 @@
+    app PersonManagement { 
+        model { 
+            entity Person {
+                firstname : string
+                lastname  : string
+                secretKey : string
+            }
+        } 
+        view {  
+            @Root
+            form PersonDetails {
+                entity Person
+                field FirstName : firstname
+                field LastName : lastname
+            }	
+        }
+    }
