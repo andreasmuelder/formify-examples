@@ -7,7 +7,8 @@
                 city : string
             }
         }
-        view {  
+        view { 
+            @Root
             form AddressDetails {
                 entity Person
                 field city : address.city
