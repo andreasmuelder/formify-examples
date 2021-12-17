@@ -1,0 +1,30 @@
+ app PersonManagement { 
+
+        model { 
+            entity Person {
+                firstname : string required
+                address : Address
+            }
+            entity Address {
+                city : string
+                street : string
+            }
+        }
+        view {  
+            @Root
+            composite CompositePerson {
+                entity Person
+                parts 
+                    PersonDetails,
+                    AddressDetails value address
+            }
+            
+            form AddressDetails {
+                entity Address
+            }
+            
+            form PersonDetails {
+                entity Person
+            }
+        }
+    }
