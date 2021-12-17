@@ -1,0 +1,103 @@
+app StudentManagement {
+
+    model {
+
+        enum Gender {MALE, FEMALE}
+
+        entity Person {
+            gender : Gender
+            firstname : string required
+            lastname : string required
+            city: string
+            email: string email
+            address : Address
+        }
+
+        entity Address {
+            city : string required
+            address : string required
+            country : string
+        }
+
+        entity Student extends Person {
+            studentId : number
+            photo : image
+            enrolmentDate : date
+            courses : array<Course>
+        }
+
+        entity Course {
+            name : string required
+            startDate : date
+        }
+
+    }
+    view {
+        @Root
+        @Alignment(Align.Horizontal)
+        master-detail Application {
+            entity Student
+            master StudentCollection
+            detail StudentComposite
+        }
+
+        collection StudentCollection {
+            entity Student
+            field name : firstname
+            field lastname : lastname
+        }
+
+        form AddressDetails {
+            entity Address
+            field city : city
+            field address : address
+        }
+
+
+        @Merged
+        composite StudentPersonDetails {
+            entity Student
+            parts StudentDetails, PersonDetails
+        }
+
+        form StudentDetails {
+            entity Student
+            field StudentId : studentId
+            field Photo : photo
+            field Enrolment : enrolmentDate
+        }
+
+        form PersonDetails {
+            entity Person
+            field Gender : gender
+            field FirstName : firstname
+            field LastName : lastname
+            field Email : email
+        }
+
+        composite StudentComposite {
+            entity Student
+            parts
+                StudentPersonDetails,
+                AddressDetails value address,
+                Courses value courses
+        }
+
+        master-detail Courses {
+        entity Course
+        master CourseCollection
+        detail CourseDetails
+        }
+        @Grid(pageSize = 5)
+        collection CourseCollection {
+            entity Course
+            field Name : name
+            field StartDate : startDate
+        }
+
+        form CourseDetails {
+            entity Course
+        }
+
+    }
+}
