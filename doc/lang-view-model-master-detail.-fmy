@@ -1,0 +1,32 @@
+ app PersonManagement { 
+
+        model { 
+            entity Person {
+                firstname : string
+                lastname : string
+                city: string
+                address : string
+            }
+        }
+        view {  
+            @Root
+            @Alignment(Align.Horizontal)
+            master-detail Application {
+                entity Person
+                master PersonCollection
+                detail PersonDetails
+            }
+            
+            collection PersonCollection {
+                entity Person
+                field name : firstname
+            }
+            
+            form PersonDetails {
+                entity Person
+                field name : lastname
+                field lastname : lastname
+                field city : city
+            }
+        }
+    }
