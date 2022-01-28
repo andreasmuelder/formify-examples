@@ -23,12 +23,6 @@ app StudentManagement {
             studentId : number
             photo : image
             enrolmentDate : date
-            courses : array<Course>
-        }
-
-        entity Course {
-            name : string required
-            startDate : date
         }
 
     }
@@ -79,25 +73,7 @@ app StudentManagement {
             entity Student
             parts
                 StudentPersonDetails,
-                AddressDetails value address,
-                Courses value courses
+                AddressDetails value address
         }
-
-        master-detail Courses {
-        entity Course
-        master CourseCollection
-        detail CourseDetails
-        }
-        @Grid(pageSize = 5)
-        collection CourseCollection {
-            entity Course
-            field Name : name
-            field StartDate : startDate
-        }
-
-        form CourseDetails {
-            entity Course
-        }
-
     }
 }
