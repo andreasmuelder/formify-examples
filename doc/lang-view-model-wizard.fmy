@@ -1,0 +1,32 @@
+app PersonManagement {
+
+    model {
+        entity Person {
+            firstname : string required
+            lastname : string
+            city: string
+            address : string
+        }
+    }
+    view {
+        @Root
+        wizard CompositePerson {
+            entity Person
+            parts
+                PersonDetail,
+                AddressDetails
+        }
+
+        form AddressDetails {
+            entity Person
+            field City : city
+            field Address : address
+        }
+
+        form PersonDetail {
+            entity Person
+            field FirstName : firstname
+            field LastName : lastname
+        }
+    }
+}
