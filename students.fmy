@@ -47,8 +47,6 @@ app StudentManagement {
             field address : address
         }
 
-
-        @Merged
         composite StudentPersonDetails {
             entity Student
             parts StudentDetails, PersonDetails
