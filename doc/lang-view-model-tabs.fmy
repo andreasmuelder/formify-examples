@@ -10,7 +10,7 @@ app PersonManagement {
     }
     view {
         @Root
-        tabs CompositePerson {
+        tab-composite CompositePerson {
             entity Person
             parts
                 PersonDetail,
