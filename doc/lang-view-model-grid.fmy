@@ -1,0 +1,22 @@
+app PersonManagement {
+
+    model {
+        entity Person {
+            firstname : string
+            lastname : string
+            city: string
+            address : string
+        }
+    }
+    view {
+        @Root
+        @Pagesize(pageSize = 5)
+        @Sortable
+        grid PersonCollection {
+            entity Person
+            field name : firstname
+            field lastname : lastname
+            field city : city
+        }
+    }
+}
