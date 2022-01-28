@@ -67,7 +67,7 @@ app StudentManagement {
             field Email : email
         }
 
-        composite StudentComposite {
+        tab-composite StudentComposite {
             entity Student
             parts
                 StudentPersonDetails,
