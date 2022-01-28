@@ -1,0 +1,36 @@
+app AllWidgets { 
+
+        model { 
+
+            enum Selection {
+                One, Two, Three
+            }
+
+            entity Example {
+            prop string : string
+            prop number : number 
+            prop boolean : boolean
+            prop date : date
+            prop time : time
+            prop color : color
+            prop image : image
+            prop selection : Selection
+            }
+
+        } 
+        
+        view {  
+            @Root
+            form Widgets {
+                entity Example
+                field textfield : string
+                field numberTextfield : number
+                field checkbox : boolean
+                field date : date
+                field time : time
+                field color: color
+                field image : image
+                field selection : selection
+            }	
+        }
+    }
